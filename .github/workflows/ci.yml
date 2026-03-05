@@ -18,10 +18,10 @@ jobs:
       run:
         working-directory: backend
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Install uv
-        uses: astral-sh/setup-uv@latest
+        uses: astral-sh/setup-uv@7
 
       - name: Set up Python
         run: uv python install 3.12
@@ -40,7 +40,7 @@ jobs:
 
       - name: Upload lint report
         if: always()
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@7
         with:
           name: ruff-lint-report
           path: backend/ruff-report.json
@@ -52,10 +52,10 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Set up Node.js
-        uses: actions/setup-node@latest
+        uses: actions/setup-node@6
         with:
           node-version: 24
           cache: npm
@@ -72,7 +72,7 @@ jobs:
 
       - name: Upload lint report
         if: always()
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@7
         with:
           name: eslint-report
           path: frontend/eslint-report.json
@@ -101,10 +101,10 @@ jobs:
     env:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Install uv
-        uses: astral-sh/setup-uv@latest
+        uses: astral-sh/setup-uv@7
 
       - name: Set up Python
         run: uv python install 3.12
@@ -117,7 +117,7 @@ jobs:
 
       - name: Upload test report
         if: always()
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@7
         with:
           name: backend-test-report
           path: backend/test-report.xml
@@ -130,10 +130,10 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Set up Node.js
-        uses: actions/setup-node@latest
+        uses: actions/setup-node@6
         with:
           node-version: 24
           cache: npm
@@ -147,7 +147,7 @@ jobs:
 
       - name: Upload test report
         if: always()
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@7
         with:
           name: frontend-test-report
           path: frontend/test-report.xml
@@ -157,7 +157,7 @@ jobs:
     needs: [backend-test, frontend-test]
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Run Trivy filesystem scan (backend)
         uses: aquasecurity/trivy-action@master
@@ -199,7 +199,7 @@ jobs:
 
       - name: Upload Trivy reports
         if: always()
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@7
         with:
           name: trivy-reports
           path: |
@@ -214,20 +214,20 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Lowercase repo name
         run: echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Log in to GHCR
-        uses: docker/login-action@latest
+        uses: docker/login-action@4
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Backend image
-        uses: docker/build-push-action@latest
+        uses: docker/build-push-action@6
         with:
           context: ./backend
           push: false
@@ -241,20 +241,20 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Lowercase repo name
         run: echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Log in to GHCR
-        uses: docker/login-action@latest
+        uses: docker/login-action@4
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Frontend image
-        uses: docker/build-push-action@latest
+        uses: docker/build-push-action@6
         with:
           context: ./frontend
           push: false
@@ -269,20 +269,20 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@6
 
       - name: Lowercase repo name
         run: echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Log in to GHCR
-        uses: docker/login-action@latest
+        uses: docker/login-action@4
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Backend
-        uses: docker/build-push-action@latest
+        uses: docker/build-push-action@6
         with:
           context: ./backend
           push: true
@@ -291,7 +291,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:latest
 
       - name: Build and push Frontend
-        uses: docker/build-push-action@latest
+        uses: docker/build-push-action@6
         with:
           context: ./frontend
           push: true
