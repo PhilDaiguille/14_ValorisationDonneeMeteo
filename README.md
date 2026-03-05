@@ -1,6 +1,6 @@
 # Valorisation Donnée Météo
 
-Projet Data For Good - Saison 14
+Projet Data For Good - Saison 15
 
 ## Structure du projet
 
