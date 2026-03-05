@@ -36,7 +36,7 @@ jobs:
         run: uv tool run ruff check --ignore=DJ001 --output-format=json . > ruff-report.json || true
 
       - name: Run Ruff linter (console)
-        run: uv run ruff check --ignore=DJ001 .
+        run: uv run ruff check --fix --ignore=DJ001 .
 
       - name: Run Ruff formatter check
         run: uv run ruff format --check .
