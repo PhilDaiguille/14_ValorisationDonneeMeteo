@@ -26,15 +26,14 @@ jobs:
       - name: Set up Python
         run: uv python install 3.12
 
-      - name: Install backend dependencies
-        run: |
-          cd backend
-          uv sync --frozen
+      - name: Install dependencies
+        run: uv sync --group dev
+
+      - name: Install Ruff
+        run: uv tool install ruff
 
       - name: Run Ruff linter
-        run: |
-          cd backend
-          uv run ruff check --ignore=DJ001 --output-format=json . > ruff-report.json || true
+        run: uv tool run ruff check --ignore=DJ001 --output-format=json . > ruff-report.json || true
 
       - name: Run Ruff linter (console)
         run: uv run ruff check --ignore=DJ001 .
