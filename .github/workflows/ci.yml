@@ -36,10 +36,10 @@ jobs:
         run: uv tool run ruff check --ignore=DJ001 --output-format=json . > ruff-report.json || true
 
       - name: Run Ruff linter (console)
-        run: uv run ruff check --fix --ignore=DJ001 .
+        run: uv tool run ruff check --ignore=DJ001 .
 
       - name: Run Ruff formatter check
-        run: uv run ruff format --check .
+        run: uv tool run ruff format --check .
 
       - name: Upload lint report
         if: always()
@@ -146,7 +146,7 @@ jobs:
         run: npm ci
 
       - name: Run unit tests with report
-        run: npm run test:unit -- --reporter=junit --outputFile=test-report.xml || true
+        run: npm run test:unit -- --reporter=junit --outputFile=test-report.xml
 
       - name: Upload test report
         if: always()
