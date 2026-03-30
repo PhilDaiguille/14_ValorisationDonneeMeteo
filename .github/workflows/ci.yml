@@ -113,7 +113,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --all-extras
 
       - name: Run tests with report
         run: uv run pytest --junitxml=test-report.xml
