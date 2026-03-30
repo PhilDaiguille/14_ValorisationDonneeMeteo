@@ -116,7 +116,7 @@ jobs:
         run: uv sync
 
       - name: Run tests with report
-        run: uv tool run pytest
+        run: uv run pytest --junitxml=test-report.xml
 
       - name: Upload test report
         if: always()
@@ -143,10 +143,10 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Run unit tests with report
-        run: npm run test:unit -- --reporter=junit --outputFile=test-report.xml
+        run: npm run test:unit -- --reporter=junit --outputFile=test-report.xml --passWithNoTests
 
       - name: Upload test report
         if: always()
