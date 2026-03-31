@@ -178,7 +178,6 @@ jobs:
           format: json
           output: trivy-backend-report.json
           severity: CRITICAL,HIGH
-          vex: .trivy-vex.openvex.json
 
       - name: Run Trivy filesystem scan (frontend)
         uses: aquasecurity/trivy-action@master
@@ -187,26 +186,23 @@ jobs:
           scan-ref: ./frontend
           format: json
           output: trivy-frontend-report.json
-          severity: CRITICAL,HIGH
-          vex: .trivy-vex.openvex.json
+          severity: CRITICAL, HIGH
 
       - name: Run Trivy scan (console - backend)
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: ./backend
-          severity: CRITICAL,HIGH
+          severity: CRITICAL, HIGH
           exit-code: 1
-          vex: .trivy-vex.openvex.json
 
       - name: Run Trivy scan (console - frontend)
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: ./frontend
-          severity: CRITICAL,HIGH
+          severity: CRITICAL, HIGH
           exit-code: 1
-          vex: .trivy-vex.openvex.json
 
       - name: Upload Trivy reports
         if: always()
