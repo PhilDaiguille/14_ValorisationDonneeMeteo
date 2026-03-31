@@ -213,6 +213,31 @@ jobs:
             trivy-backend-report.json
             trivy-frontend-report.json
 
+  save-reports:
+    name: Save Reports to Repository
+    needs: [backend-lint, frontend-lint, backend-test, frontend-test, security-scan]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: reports/
+
+      - name: Commit reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/
+          git diff --staged --quiet || git commit -m "ci: update reports [skip ci]"
+          git push
+
   build-backend:
     name: Build Backend Docker Image
     needs: security-scan
