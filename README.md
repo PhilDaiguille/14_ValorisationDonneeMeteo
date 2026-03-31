@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/PhilDaiguille/14_ValorisationDonneeMeteo/actions/workflows/ci.yml/badge.svg)](https://github.com/PhilDaiguille/14_ValorisationDonneeMeteo/actions/workflows/ci.yml)
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/PhilDaiguille/14_ValorisationDonneeMeteo/badge)](https://scorecard.dev/viewer/?uri=github.com/PhilDaiguille/14_ValorisationDonneeMeteo/)
 Projet Data For Good - Saison 19
 
 ## Structure du projet
