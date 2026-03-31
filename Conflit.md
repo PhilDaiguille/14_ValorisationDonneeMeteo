@@ -2,7 +2,8 @@
 
 ## Context
 
-The exercise consists of simulating a Git conflict between several team members, then resolving it and documenting the process.
+The exercise consists of simulating a Git conflict between several team members, then resolving it and documenting the
+process.
 
 The file involved is `README.md`, on the line indicating the season number of the Data For Good project.
 
@@ -18,17 +19,19 @@ Projet Data For Good - Saison 14
 
 Three team members modified the same line of the README in parallel:
 
-| Branch | Author | Change | Commit |
-|---|---|---|---|
-| `feat/conflit` | Camille Girard | Saison 14 → **Saison 16** | `0eec1a2` |
-| `main` | PhilDaiguille | Saison 14 → Saison 15 → **Saison 19** | `1b16b1d`, `130f728` |
-| `feat/conflit2` | Catalina Danila | Saison 15 → **Saison 177** | `a3149da` |
+| Branch          | Author          | Change                                | Commit               |
+|-----------------|-----------------|---------------------------------------|----------------------|
+| `feat/conflit`  | Camille Girard  | Saison 14 → **Saison 16**             | `0eec1a2`            |
+| `main`          | PhilDaiguille   | Saison 14 → Saison 15 → **Saison 19** | `1b16b1d`, `130f728` |
+| `feat/conflit2` | Catalina Danila | Saison 15 → **Saison 177**            | `a3149da`            |
 
 ### 3. Conflict Detection
 
-During a `git merge` or `git pull`, Git detects that the same line of `README.md` has been modified in different branches. It cannot merge automatically because the changes are incompatible.
+During a `git merge` or `git pull`, Git detects that the same line of `README.md` has been modified in different
+branches. It cannot merge automatically because the changes are incompatible.
 
 Example Git message:
+
 ```
 Auto-merging README.md
 CONFLICT (content): Merge conflict in README.md
@@ -66,7 +69,9 @@ In our case, the correct value kept was **Saison 19** (the latest update on `mai
 ### 6. Verification
 
 After resolution:
+
 ```bash
 git log --oneline --graph
 ```
+
 Confirm that the merge commit is present and the history is clean.

@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 env:
@@ -165,7 +165,7 @@ jobs:
 
   security-scan:
     name: Security Scan
-    needs: [backend-test, frontend-test]
+    needs: [ backend-test, frontend-test ]
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
@@ -295,7 +295,7 @@ jobs:
   push-images:
     name: Push Docker Images
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: [build-backend, build-frontend]
+    needs: [ build-backend, build-frontend ]
     runs-on: ubuntu-24.04
     permissions:
       contents: read
