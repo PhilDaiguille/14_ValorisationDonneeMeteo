@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.69.3"
   },
-  "ReportID": "019d42d1-44ce-7ba9-9c91-408a11f25ddb",
-  "CreatedAt": "2026-03-31T07:35:04.14276606Z",
+  "ReportID": "019d9225-d825-7ee2-bad3-1cf268bb5a2b",
+  "CreatedAt": "2026-04-15T17:17:26.949976823Z",
   "ArtifactName": "backend",
   "ArtifactType": "filesystem",
   "Results": [
@@ -2226,6 +2226,166 @@
           "LastModifiedDate": "2026-03-05T14:12:38.11Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-33034",
+          "VendorIDs": [
+            "GHSA-933h-hp56-hf7m"
+          ],
+          "PkgID": "django@5.2.10",
+          "PkgName": "django",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/django@5.2.10",
+            "UID": "4744390368fbf011"
+          },
+          "InstalledVersion": "5.2.10",
+          "FixedVersion": "6.0.4, 5.2.13, 4.2.30",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33034",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:ffee670cb8184495fadaea533f5228d662464b026da0ee020445e0f765f71518",
+          "Title": "Django: Django: Denial of Service via missing or understated Content-Length header in ASGI requests",
+          "Description": "An issue was discovered in 6.0 before 6.0.4, 5.2 before 5.2.13, and 4.2 before 4.2.30.\nASGI requests with a missing or understated `Content-Length` header could\r\nbypass the `DATA_UPLOAD_MAX_MEMORY_SIZE` limit when reading\r\n`HttpRequest.body`, allowing remote attackers to load an unbounded request body into\r\nmemory.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Superior for reporting this issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-770"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-33034",
+            "https://docs.djangoproject.com/en/dev/releases/security",
+            "https://docs.djangoproject.com/en/dev/releases/security/",
+            "https://github.com/django/django",
+            "https://github.com/django/django/commit/953c238058c0ce387a1a41cb491bfc1875d73ad0",
+            "https://groups.google.com/g/django-announce",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-33034",
+            "https://ubuntu.com/security/notices/USN-8154-1",
+            "https://www.cve.org/CVERecord?id=CVE-2026-33034",
+            "https://www.djangoproject.com/weblog/2026/apr/07/security-releases",
+            "https://www.djangoproject.com/weblog/2026/apr/07/security-releases/"
+          ],
+          "PublishedDate": "2026-04-07T15:17:39.393Z",
+          "LastModifiedDate": "2026-04-13T17:38:35.42Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3902",
+          "VendorIDs": [
+            "GHSA-mvfq-ggxm-9mc5"
+          ],
+          "PkgID": "django@5.2.10",
+          "PkgName": "django",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/django@5.2.10",
+            "UID": "4744390368fbf011"
+          },
+          "InstalledVersion": "5.2.10",
+          "FixedVersion": "6.0.4, 5.2.13, 4.2.30",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3902",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:2e55a899c67543acbcfb5978b1610c36ccb93a075f56fc15b95d2d5bc1d506c7",
+          "Title": "Django: Django: Header spoofing via ambiguous header mapping",
+          "Description": "An issue was discovered in 6.0 before 6.0.4, 5.2 before 5.2.13, and 4.2 before 4.2.30.\n`ASGIRequest` allows a remote attacker to spoof headers by exploiting an ambiguous mapping of two header variants (with hyphens or with underscores) to a single version with underscores.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Tarek Nakkouch for reporting this issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-290"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2,
+            "ubuntu": 1
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3902",
+            "https://docs.djangoproject.com/en/dev/releases/security",
+            "https://docs.djangoproject.com/en/dev/releases/security/",
+            "https://github.com/django/django",
+            "https://github.com/django/django/commit/caf90a971f09323775ed0cacf94eadaf39d040e0",
+            "https://groups.google.com/g/django-announce",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3902",
+            "https://ubuntu.com/security/notices/USN-8154-1",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3902",
+            "https://www.djangoproject.com/weblog/2026/apr/07/security-releases",
+            "https://www.djangoproject.com/weblog/2026/apr/07/security-releases/"
+          ],
+          "PublishedDate": "2026-04-07T15:17:46.353Z",
+          "LastModifiedDate": "2026-04-13T17:38:05.533Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-40192",
+          "VendorIDs": [
+            "GHSA-whj4-6x5x-4v2j"
+          ],
+          "PkgID": "pillow@12.1.1",
+          "PkgName": "pillow",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/pillow@12.1.1",
+            "UID": "952efb99763bee56"
+          },
+          "InstalledVersion": "12.1.1",
+          "FixedVersion": "12.2.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-40192",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:b3ff2e46de7d55a6c658157b55fd32f4a00d1a3e67406df2e064e4722a5c71af",
+          "Title": "FITS GZIP decompression bomb in Pillow",
+          "Description": "### Impact\nPillow did not limit the amount of GZIP-compressed data read when decoding a FITS image, making it vulnerable to decompression bomb attacks. A specially crafted FITS file could cause unbounded memory consumption, leading to denial of service (OOM crash or severe performance degradation).\n\n### Patches\nThe amount of data read is now limited to the necessary amount.\nFixed in Pillow 12.2.0 (PR #9521).\n\n### Workarounds\nAvoid Pillow \u003e= 10.3.0, \u003c 12.2.0\nOnly open [specific image formats](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.0.html#image-open-add-formats-parameter), excluding FITS.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+              "V40Score": 8.7
+            }
+          },
+          "References": [
+            "https://github.com/python-pillow/Pillow",
+            "https://github.com/python-pillow/Pillow/commit/3cb854e8b2bab43f40e342e665f9340d861aa628",
+            "https://github.com/python-pillow/Pillow/pull/9521",
+            "https://github.com/python-pillow/Pillow/security/advisories/GHSA-whj4-6x5x-4v2j",
+            "https://pillow.readthedocs.io/en/stable/releasenotes/12.2.0.html#prevent-fits-decompression-bomb"
+          ]
+        },
+        {
           "VulnerabilityID": "CVE-2026-31958",
           "VendorIDs": [
             "GHSA-qjxf-f2mg-c6mc"
@@ -2254,13 +2414,16 @@
             "CWE-400"
           ],
           "VendorSeverity": {
+            "amazon": 3,
             "ghsa": 3,
             "nvd": 3,
             "redhat": 2
           },
           "CVSS": {
             "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
               "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+              "V3Score": 7.5,
               "V40Score": 8.7
             },
             "nvd": {
@@ -2278,11 +2441,70 @@
             "https://github.com/tornadoweb/tornado/commit/119a195e290c43ad2d63a2cf012c29d43d6ed839",
             "https://github.com/tornadoweb/tornado/releases/tag/v6.5.5",
             "https://github.com/tornadoweb/tornado/security/advisories/GHSA-qjxf-f2mg-c6mc",
+            "https://lists.debian.org/debian-lts-announce/2026/04/msg00000.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-31958",
             "https://www.cve.org/CVERecord?id=CVE-2026-31958"
           ],
           "PublishedDate": "2026-03-11T20:16:16.617Z",
-          "LastModifiedDate": "2026-03-16T19:32:06.37Z"
+          "LastModifiedDate": "2026-04-01T15:23:00.217Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-35536",
+          "VendorIDs": [
+            "GHSA-fqwm-6jpj-5wxc"
+          ],
+          "PkgID": "tornado@6.5.4",
+          "PkgName": "tornado",
+          "PkgIdentifier": {
+            "PURL": "pkg:pypi/tornado@6.5.4",
+            "UID": "c8dbf7942bad529e"
+          },
+          "InstalledVersion": "6.5.4",
+          "FixedVersion": "6.5.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-35536",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory pip",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Apip"
+          },
+          "Fingerprint": "sha256:6c00ea46be997c732ea8b10fb3d055e5fbad0979d5f9d1b39e6d83aefc701412",
+          "Title": "tornado: Tornado: Cookie attribute injection due to improper handling of cookie arguments",
+          "Description": "In Tornado before 6.5.5, cookie attribute injection could occur because the domain, path, and samesite arguments to .RequestHandler.set_cookie were not checked for crafted characters.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-159"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+              "V3Score": 7.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+              "V3Score": 5.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-35536",
+            "https://github.com/tornadoweb/tornado",
+            "https://github.com/tornadoweb/tornado/releases/tag/v6.5.5",
+            "https://github.com/tornadoweb/tornado/security/advisories/GHSA-78cv-mqj4-43f7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-35536",
+            "https://www.cve.org/CVERecord?id=CVE-2026-35536"
+          ],
+          "PublishedDate": "2026-04-03T04:16:53.55Z",
+          "LastModifiedDate": "2026-04-10T15:14:22.7Z"
         }
       ]
     }

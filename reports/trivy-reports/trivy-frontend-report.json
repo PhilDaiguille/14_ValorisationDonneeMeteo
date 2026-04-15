@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.69.3"
   },
-  "ReportID": "019d42d1-5f9d-7d35-8d2e-4e3785b4d685",
-  "CreatedAt": "2026-03-31T07:35:11.005867942Z",
+  "ReportID": "019d9225-e930-741d-ae87-0fc42307b818",
+  "CreatedAt": "2026-04-15T17:17:31.312271884Z",
   "ArtifactName": "frontend",
   "ArtifactType": "filesystem",
   "Results": [
@@ -26691,6 +26691,231 @@
             }
           ],
           "AnalyzedBy": "npm"
+        }
+      ],
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2026-35209",
+          "VendorIDs": [
+            "GHSA-737v-mqg7-c878"
+          ],
+          "PkgID": "defu@6.1.4",
+          "PkgName": "defu",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/defu@6.1.4",
+            "UID": "965ff16236eb754"
+          },
+          "InstalledVersion": "6.1.4",
+          "FixedVersion": "6.1.5",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-35209",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:b615d5cf4fb802e780614955c4b2987cd437f4c74ca496301e626f7447bc7aac",
+          "Title": "defu: Prototype pollution via `__proto__` key in defaults argument",
+          "Description": "defu is software that allows uers to assign default properties recursively. Prior to version 6.1.5, applications that pass unsanitized user input (e.g. parsed JSON request bodies, database records, or config files from untrusted sources) as the first argument to `defu()` are vulnerable to prototype pollution. A crafted payload containing a `__proto__` key can override intended default values in the merged resul. The internal `_defu` function used `Object.assign({}, defaults)` to copy the defaults object. `Object.assign` invokes the `__proto__` setter, which replaces the resulting object's `[[Prototype]]` with attacker-controlled values. Properties inherited from the polluted prototype then bypass the existing `__proto__` key guard in the `for...in` loop and land in the final result. Version 6.1.5 replaces `Object.assign({}, defaults)` with object spread (`{ ...defaults }`), which uses `[[DefineOwnProperty]]` and does not invoke the `__proto__` setter.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1321"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://github.com/unjs/defu",
+            "https://github.com/unjs/defu/commit/3942bfbbcaa72084bd4284846c83bd61ed7c8b29",
+            "https://github.com/unjs/defu/pull/156",
+            "https://github.com/unjs/defu/releases/tag/v6.1.5",
+            "https://github.com/unjs/defu/security/advisories/GHSA-737v-mqg7-c878",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-35209"
+          ],
+          "PublishedDate": "2026-04-06T18:16:44.157Z",
+          "LastModifiedDate": "2026-04-07T13:20:11.643Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-4800",
+          "VendorIDs": [
+            "GHSA-r5fr-rjxr-66jc"
+          ],
+          "PkgID": "lodash@4.17.23",
+          "PkgName": "lodash",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/lodash@4.17.23",
+            "UID": "cb64a1d94ab9c270"
+          },
+          "InstalledVersion": "4.17.23",
+          "FixedVersion": "4.18.0",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-4800",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:e7a31a9a26142adc58bc117a3cf65fa07515b0cd060b14d59000802e804a7b66",
+          "Title": "lodash: lodash: Arbitrary code execution via untrusted input in template imports",
+          "Description": "Impact:\n\nThe fix for CVE-2021-23337 (https://github.com/advisories/GHSA-35jh-r3h4-6jhm) added validation for the variable option in _.template but did not apply the same validation to options.imports key names. Both paths flow into the same Function() constructor sink.\n\nWhen an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in. If Object.prototype has been polluted by any other vector, the polluted keys are copied into the imports object and passed to Function().\n\nPatches:\n\nUsers should upgrade to version 4.18.0.\n\nWorkarounds:\n\nDo not pass untrusted input as key names in options.imports. Only use developer-controlled, static key names.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-94"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "nvd": 4,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 9.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-4800",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+            "https://github.com/lodash/lodash",
+            "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
+            "https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-4800",
+            "https://www.cve.org/CVERecord?id=CVE-2026-4800"
+          ],
+          "PublishedDate": "2026-03-31T20:16:29.66Z",
+          "LastModifiedDate": "2026-04-07T15:43:13.197Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39363",
+          "VendorIDs": [
+            "GHSA-p9ff-h696-f583"
+          ],
+          "PkgID": "vite@7.3.1",
+          "PkgName": "vite",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/vite@7.3.1",
+            "UID": "5fc91e0fe9489995"
+          },
+          "InstalledVersion": "7.3.1",
+          "FixedVersion": "8.0.5, 7.3.2, 6.4.2",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39363",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:39dab7dfef7edf56cf85ae2357e0b9262376b86b2e3678939615bc4ada817199",
+          "Title": "Vite: Vite: Information disclosure via WebSocket connection bypasses access control",
+          "Description": "Vite is a frontend tooling framework for JavaScript. From 6.0.0 to before 6.4.2, 7.3.2, and 8.0.5, if it is possible to connect to the Vite dev server’s WebSocket without an Origin header, an attacker can invoke fetchModule via the custom WebSocket event vite:invoke and combine file://... with ?raw (or ?inline) to retrieve the contents of arbitrary files on the server as a JavaScript string (e.g., export default \"...\"). The access control enforced in the HTTP request path (such as server.fs.allow) is not applied to this WebSocket-based execution path. This vulnerability is fixed in 6.4.2, 7.3.2, and 8.0.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-200",
+            "CWE-306"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+              "V40Score": 8.2
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-39363",
+            "https://github.com/vitejs/vite",
+            "https://github.com/vitejs/vite/commit/f02d9fde0b195afe3ea2944414186962fbbe41e0",
+            "https://github.com/vitejs/vite/pull/22159",
+            "https://github.com/vitejs/vite/releases/tag/v6.4.2",
+            "https://github.com/vitejs/vite/releases/tag/v7.3.2",
+            "https://github.com/vitejs/vite/releases/tag/v8.0.5",
+            "https://github.com/vitejs/vite/security/advisories/GHSA-p9ff-h696-f583",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-39363",
+            "https://www.cve.org/CVERecord?id=CVE-2026-39363"
+          ],
+          "PublishedDate": "2026-04-07T20:16:30Z",
+          "LastModifiedDate": "2026-04-08T21:27:00.663Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39364",
+          "VendorIDs": [
+            "GHSA-v2wj-q39q-566r"
+          ],
+          "PkgID": "vite@7.3.1",
+          "PkgName": "vite",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/vite@7.3.1",
+            "UID": "5fc91e0fe9489995"
+          },
+          "InstalledVersion": "7.3.1",
+          "FixedVersion": "8.0.5, 7.3.2",
+          "Status": "fixed",
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39364",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:966fc98777d0dd0de1b2080da5aa07a17bc2b897d7be2ca1b678f9bc41f29b23",
+          "Title": "vite: Vite: Information disclosure via query parameter manipulation on the development server",
+          "Description": "Vite is a frontend tooling framework for JavaScript. From 7.1.0 to before 7.3.2 and 8.0.5, on the Vite dev server, files that should be blocked by server.fs.deny (e.g., .env, *.crt) can be retrieved with HTTP 200 responses when query parameters such as ?raw, ?import\u0026raw, or ?import\u0026url\u0026inline are appended. This vulnerability is fixed in 7.3.2 and 8.0.5.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-180",
+            "CWE-284"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+              "V40Score": 8.2
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-39364",
+            "https://github.com/vitejs/vite",
+            "https://github.com/vitejs/vite/commit/a9a3df299378d9cbc5f069e3536a369f8188c8ff",
+            "https://github.com/vitejs/vite/pull/22160",
+            "https://github.com/vitejs/vite/releases/tag/v7.3.2",
+            "https://github.com/vitejs/vite/releases/tag/v8.0.5",
+            "https://github.com/vitejs/vite/security/advisories/GHSA-v2wj-q39q-566r",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-39364",
+            "https://www.cve.org/CVERecord?id=CVE-2026-39364"
+          ],
+          "PublishedDate": "2026-04-07T20:16:30.17Z",
+          "LastModifiedDate": "2026-04-08T21:27:00.663Z"
         }
       ]
     }
