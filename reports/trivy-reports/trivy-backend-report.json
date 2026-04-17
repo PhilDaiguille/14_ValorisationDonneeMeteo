@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.69.3"
   },
-  "ReportID": "019d9225-d825-7ee2-bad3-1cf268bb5a2b",
-  "CreatedAt": "2026-04-15T17:17:26.949976823Z",
+  "ReportID": "019d9d3a-e5e3-76fb-94bc-0af3c2363241",
+  "CreatedAt": "2026-04-17T20:56:16.099460269Z",
   "ArtifactName": "backend",
   "ArtifactType": "filesystem",
   "Results": [
@@ -2366,8 +2366,12 @@
           },
           "Fingerprint": "sha256:b3ff2e46de7d55a6c658157b55fd32f4a00d1a3e67406df2e064e4722a5c71af",
           "Title": "FITS GZIP decompression bomb in Pillow",
-          "Description": "### Impact\nPillow did not limit the amount of GZIP-compressed data read when decoding a FITS image, making it vulnerable to decompression bomb attacks. A specially crafted FITS file could cause unbounded memory consumption, leading to denial of service (OOM crash or severe performance degradation).\n\n### Patches\nThe amount of data read is now limited to the necessary amount.\nFixed in Pillow 12.2.0 (PR #9521).\n\n### Workarounds\nAvoid Pillow \u003e= 10.3.0, \u003c 12.2.0\nOnly open [specific image formats](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.0.html#image-open-add-formats-parameter), excluding FITS.",
+          "Description": "Pillow is a Python imaging library. Versions 10.3.0 through 12.1.1 did not limit the amount of GZIP-compressed data read when decoding a FITS image, making them vulnerable to decompression bomb attacks. A specially crafted FITS file could cause unbounded memory consumption, leading to denial of service (OOM crash or severe performance degradation). If users are unable to immediately upgrade, they should only open specific image formats, excluding FITS, as a workaround.",
           "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-770"
+          ],
           "VendorSeverity": {
             "ghsa": 3
           },
@@ -2383,7 +2387,9 @@
             "https://github.com/python-pillow/Pillow/pull/9521",
             "https://github.com/python-pillow/Pillow/security/advisories/GHSA-whj4-6x5x-4v2j",
             "https://pillow.readthedocs.io/en/stable/releasenotes/12.2.0.html#prevent-fits-decompression-bomb"
-          ]
+          ],
+          "PublishedDate": "2026-04-15T23:16:10.053Z",
+          "LastModifiedDate": "2026-04-15T23:16:10.053Z"
         },
         {
           "VulnerabilityID": "CVE-2026-31958",
@@ -2417,6 +2423,7 @@
             "amazon": 3,
             "ghsa": 3,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -2441,6 +2448,8 @@
             "https://github.com/tornadoweb/tornado/commit/119a195e290c43ad2d63a2cf012c29d43d6ed839",
             "https://github.com/tornadoweb/tornado/releases/tag/v6.5.5",
             "https://github.com/tornadoweb/tornado/security/advisories/GHSA-qjxf-f2mg-c6mc",
+            "https://linux.oracle.com/cve/CVE-2026-31958.html",
+            "https://linux.oracle.com/errata/ELSA-2026-8093.html",
             "https://lists.debian.org/debian-lts-announce/2026/04/msg00000.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-31958",
             "https://www.cve.org/CVERecord?id=CVE-2026-31958"

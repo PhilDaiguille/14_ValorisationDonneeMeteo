@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.69.3"
   },
-  "ReportID": "019d9225-e930-741d-ae87-0fc42307b818",
-  "CreatedAt": "2026-04-15T17:17:31.312271884Z",
+  "ReportID": "019d9d3b-0883-7f1f-b2d0-b3d2341fc07a",
+  "CreatedAt": "2026-04-17T20:56:24.963993157Z",
   "ArtifactName": "frontend",
   "ArtifactType": "filesystem",
   "Results": [
@@ -26833,12 +26833,17 @@
           ],
           "VendorSeverity": {
             "ghsa": 3,
+            "nvd": 3,
             "redhat": 3
           },
           "CVSS": {
             "ghsa": {
               "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
               "V40Score": 8.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
             },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -26858,7 +26863,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-39363"
           ],
           "PublishedDate": "2026-04-07T20:16:30Z",
-          "LastModifiedDate": "2026-04-08T21:27:00.663Z"
+          "LastModifiedDate": "2026-04-15T20:07:07.343Z"
         },
         {
           "VulnerabilityID": "CVE-2026-39364",
@@ -26891,12 +26896,17 @@
           ],
           "VendorSeverity": {
             "ghsa": 3,
+            "nvd": 3,
             "redhat": 3
           },
           "CVSS": {
             "ghsa": {
               "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
               "V40Score": 8.2
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
             },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -26915,7 +26925,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-39364"
           ],
           "PublishedDate": "2026-04-07T20:16:30.17Z",
-          "LastModifiedDate": "2026-04-08T21:27:00.663Z"
+          "LastModifiedDate": "2026-04-15T20:01:49.01Z"
         }
       ]
     }
