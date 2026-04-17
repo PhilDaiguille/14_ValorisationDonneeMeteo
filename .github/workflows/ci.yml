@@ -216,10 +216,22 @@ jobs:
           severity: CRITICAL,HIGH
 
       - name: Run Trivy scan (console - backend)
-        run: trivy fs ./backend --severity CRITICAL --exit-code 1 --vex ./vex.openvex.json
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # master
+        with:
+          scan-type: fs
+          scan-ref: ./backend
+          severity: CRITICAL
+          exit-code: 1
+          trivy-config: trivy.yaml
 
       - name: Run Trivy scan (console - frontend)
-        run: trivy fs ./frontend --severity CRITICAL --exit-code 1 --vex ./vex.openvex.json
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # master
+        with:
+          scan-type: fs
+          scan-ref: ./frontend
+          severity: CRITICAL
+          exit-code: 1
+          trivy-config: trivy.yaml
 
       - name: Upload Trivy reports
         if: always()
