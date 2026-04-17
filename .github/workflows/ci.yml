@@ -222,6 +222,7 @@ jobs:
           scan-ref: ./backend
           severity: CRITICAL
           exit-code: 1
+          trivy-config: trivy.yaml
 
       - name: Run Trivy scan (console - frontend)
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # master
@@ -230,6 +231,7 @@ jobs:
           scan-ref: ./frontend
           severity: CRITICAL
           exit-code: 1
+          trivy-config: trivy.yaml
 
       - name: Upload Trivy reports
         if: always()

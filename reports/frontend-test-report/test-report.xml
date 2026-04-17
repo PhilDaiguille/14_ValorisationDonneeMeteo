@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="2" failures="0" errors="0" time="0.00284988">
-    <testsuite name="app/utils/date.test.ts" timestamp="2026-04-15T17:16:58.186Z" hostname="runnervm35a4x" tests="2" failures="0" errors="0" skipped="0" time="0.00284988">
-        <testcase classname="app/utils/date.test.ts" name="date utils &gt; formats a date to ISO string" time="0.001454075">
+<testsuites name="vitest tests" tests="2" failures="0" errors="0" time="0.002761894">
+    <testsuite name="app/utils/date.test.ts" timestamp="2026-04-17T21:10:12.255Z" hostname="runnervmeorf1" tests="2" failures="0" errors="0" skipped="0" time="0.002761894">
+        <testcase classname="app/utils/date.test.ts" name="date utils &gt; formats a date to ISO string" time="0.001513759">
         </testcase>
-        <testcase classname="app/utils/date.test.ts" name="date utils &gt; compares two dates correctly" time="0.000217425">
+        <testcase classname="app/utils/date.test.ts" name="date utils &gt; compares two dates correctly" time="0.000205853">
         </testcase>
     </testsuite>
 </testsuites>
