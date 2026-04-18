@@ -1,8 +1,0 @@
-{
-    "@context": "https://openvex.dev/ns/v0.2.0",
-    "@id": "https://github.com/PhilDaiguille/14_ValorisationDonneeMeteo/.trivy-vex.openvex.json",
-    "author": "ValorisationDonneeMeteo Team",
-    "timestamp": "2026-03-05T00:00:00Z",
-    "version": 1,
-    "statements": []
-}
