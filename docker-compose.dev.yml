@@ -60,16 +60,25 @@ services:
     networks:
       - app_net
 
-  tempo:
-    image: grafana/tempo:latest
+  grafana:
+    image: grafana/grafana:latest
     ports:
-      - "9091:9090"
-      - "3200:3200"
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
     networks:
       - app_net
 
 volumes:
   timescaledb-data:
+    driver: local
+  grafana-data:
     driver: local
 networks:
   app_net:

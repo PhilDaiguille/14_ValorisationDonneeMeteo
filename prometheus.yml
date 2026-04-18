@@ -5,8 +5,9 @@ global:
 scrape_configs:
   - job_name: prometheus
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['prometheus:9090']
 
-  - job_name: tempo
+  - job_name: django
     static_configs:
-      - targets: ['tempo:3200']
+      - targets: ['backend:8000']
+    metrics_path: /metrics
