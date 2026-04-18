@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.69.3"
   },
-  "ReportID": "019d9d4b-a2fb-7bc4-96ad-b3105092e539",
-  "CreatedAt": "2026-04-17T21:14:33.083773347Z",
+  "ReportID": "019da171-01bc-7925-8ec7-4423564327b8",
+  "CreatedAt": "2026-04-18T16:33:51.036600942Z",
   "ArtifactName": "backend",
   "ArtifactType": "filesystem",
   "Results": [
@@ -62,7 +62,7 @@
           "Name": "meteo-api",
           "Identifier": {
             "PURL": "pkg:pypi/meteo-api@0.1.0",
-            "UID": "6ba6192b22d0d722"
+            "UID": "466cd881362009ef"
           },
           "Version": "0.1.0",
           "Relationship": "root",
@@ -71,6 +71,7 @@
             "django-environ@0.12.0",
             "django-extensions@4.1",
             "django-filter@25.2",
+            "django-prometheus@2.4.1",
             "django@5.2.10",
             "djangorestframework@3.16.1",
             "drf-spectacular@0.29.0",
@@ -158,6 +159,21 @@
           "Relationship": "direct",
           "DependsOn": [
             "django@5.2.10"
+          ],
+          "AnalyzedBy": "uv"
+        },
+        {
+          "ID": "django-prometheus@2.4.1",
+          "Name": "django-prometheus",
+          "Identifier": {
+            "PURL": "pkg:pypi/django-prometheus@2.4.1",
+            "UID": "3027aee9cb06ba7b"
+          },
+          "Version": "2.4.1",
+          "Relationship": "direct",
+          "DependsOn": [
+            "django@5.2.10",
+            "prometheus-client@0.24.1"
           ],
           "AnalyzedBy": "uv"
         },
